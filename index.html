@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>デザイン提案合意書 | スリーイーデザイン</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://3e-design.com/wp-content/uploads/2026/05/cropped-3e_fav-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://3e-design.com/wp-content/uploads/2026/05/cropped-3e_fav-180x180.png">
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --color-page-bg: #f5f5f3;
+  --color-card-bg: #ffffff;
+  --color-text: #1a1a1a;
+  --color-label: #444444;
+  --color-sub: #666666;
+  --color-border: #d0d0d0;
+  --color-border-light: #e8e8e8;
+  --color-surface: #f8f8f6;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04);
+  --font: system-ui, -apple-system, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic Medium", "Yu Gothic", sans-serif;
+  --max-width: 860px;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--color-page-bg);
+  color: var(--color-text);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header */
+.site-header {
+  background: var(--color-card-bg);
+  border-bottom: 1px solid var(--color-border-light);
+  padding: 44px 0 36px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+.header-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; }
+.site-header h1 { font-size: 24px; font-weight: 700; letter-spacing: 0.06em; line-height: 1.3; }
+.header-note { margin-top: 10px; font-size: 13px; color: var(--color-sub); }
+
+/* Mode Switcher */
+.mode-switcher {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.mode-btn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-sub);
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.04em;
+}
+.mode-btn:hover { border-color: #999; color: var(--color-text); }
+.mode-btn.active {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+  color: #fff;
+}
+
+/* Mode Badge */
+.mode-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.mode-badge.print { background: #f0f0ec; color: #666; }
+.mode-badge.digital { background: #e8f0fe; color: #3a5fc8; }
+
+/* Container */
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px 80px; }
+
+/* Cards */
+.form-section {
+  background: var(--color-card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-card);
+  padding: 36px 40px;
+  margin-bottom: 16px;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  border-left: 4px solid #999;
+  padding-left: 12px;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+/* Fields */
+.field { margin-bottom: 20px; }
+.field:last-child { margin-bottom: 0; }
+.field--short { max-width: 240px; }
+.field > label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-label);
+  margin-bottom: 8px;
+}
+
+/* Inputs */
+textarea, input[type="date"], input[type="text"] {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 11px 13px;
+  font-family: var(--font);
+  font-size: 16px;
+  color: var(--color-text);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 44px;
+}
+textarea { resize: none; line-height: 1.65; min-height: 60px; }
+textarea:focus, input[type="date"]:focus, input[type="text"]:focus {
+  border-color: #333;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.07);
+}
+textarea::placeholder, input[type="text"]::placeholder { color: #bbb; }
+input[readonly] { background: #f8f8f8; color: #666; }
+
+/* Handwrite line (印刷版署名欄) */
+.handwrite-line {
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0;
+  background: transparent;
+  padding: 8px 4px;
+  min-height: 40px;
+  pointer-events: none;
+}
+
+/* Agreement Box */
+.agreement-box {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: 6px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+}
+.agreement-item { display: flex; gap: 12px; margin-bottom: 12px; font-size: 14px; line-height: 1.8; }
+.agreement-item:last-child { margin-bottom: 0; }
+.agreement-num { font-weight: 700; color: #999; flex-shrink: 0; min-width: 20px; }
+
+/* Fee */
+.fee-display {
+  background: #f7f3ee;
+  border: 1px solid #e0d5c8;
+  border-radius: 6px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.fee-label { font-size: 13px; color: var(--color-sub); flex-shrink: 0; }
+.fee-amount { font-size: 20px; font-weight: 700; letter-spacing: 0.02em; }
+.fee-note { font-size: 12px; color: var(--color-sub); }
+
+/* Signature */
+.signature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.signature-block { border: 1px solid var(--color-border); border-radius: 6px; padding: 20px; }
+.signature-block-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-sub);
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+.signature-line { margin-bottom: 14px; }
+.signature-line:last-child { margin-bottom: 0; }
+.signature-line label { display: block; font-size: 12px; color: var(--color-sub); margin-bottom: 5px; }
+
+/* Digital OK banner */
+.digital-ok-banner {
+  background: #eaf4ea;
+  border: 1px solid #b8d9b8;
+  border-radius: 6px;
+  padding: 16px 20px;
+  font-size: 14px;
+  color: #2a6b2a;
+  line-height: 1.7;
+  margin-top: 16px;
+}
+
+/* Utility */
+.hidden { display: none !important; }
+.note-text { font-size: 13px; color: var(--color-sub); margin-top: 8px; line-height: 1.6; }
+
+/* PDF Button */
+.print-action { margin-top: 8px; padding: 44px 0; text-align: center; }
+#pdf-btn {
+  background: #222;
+  color: #fff;
+  border: none;
+  padding: 16px 0;
+  width: 280px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+#pdf-btn:hover { background: #444; }
+#pdf-btn:active { background: #000; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .site-header { padding: 28px 0 22px; margin-bottom: 16px; }
+  .header-inner { padding: 0 16px; }
+  .site-header h1 { font-size: 18px; }
+  .container { padding: 0 10px 64px; }
+  .form-section { padding: 20px 16px; margin-bottom: 10px; }
+  .field--short { max-width: 100%; }
+  .signature-grid { grid-template-columns: 1fr; gap: 12px; }
+  .fee-display { flex-direction: column; gap: 4px; }
+  #pdf-btn { width: 100%; font-size: 16px; padding: 16px; border-radius: 6px; }
+  .mode-btn { font-size: 12px; padding: 7px 14px; }
+}
+
+/* Print */
+@media print {
+  @page { size: A4 portrait; margin: 13mm 15mm; }
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  body { font-size: 10pt; background: #fff !important; line-height: 1.6; }
+  .site-header { background: #fff !important; border-bottom: 1pt solid #ccc; margin-bottom: 12pt; padding: 8pt 0; }
+  .header-inner { padding: 0; max-width: 100%; }
+  .site-header h1 { font-size: 16pt; font-weight: 700; }
+  .header-note { font-size: 8pt; }
+  .mode-switcher { display: none !important; }
+  .container { padding: 0; max-width: 100%; }
+  .form-section { background: #fff !important; border: 0.5pt solid #ddd !important; box-shadow: none !important; padding: 12pt 14pt; margin-bottom: 8pt; page-break-inside: avoid; }
+  .section-title { font-size: 10pt; margin-bottom: 8pt; padding-left: 8pt; border-left: 2.5pt solid #999; }
+  .field { margin-bottom: 7pt; }
+  .field > label { font-size: 8pt; margin-bottom: 3pt; color: #444; }
+  .field--short { max-width: 180pt; }
+  .mode-badge { font-size: 8pt; padding: 2pt 8pt; margin-bottom: 10pt; }
+  .agreement-box { background: #f8f8f8 !important; border: 0.5pt solid #ddd !important; padding: 10pt 14pt; }
+  .agreement-item { font-size: 9pt; line-height: 1.7; }
+  .fee-display { background: #f7f3ee !important; border: 0.5pt solid #e0d5c8 !important; padding: 8pt 12pt; flex-direction: row; align-items: baseline; gap: 8pt; }
+  .fee-amount { font-size: 14pt; }
+  .fee-label, .fee-note { font-size: 8pt; }
+  .signature-grid { grid-template-columns: 1fr 1fr; gap: 12pt; }
+  .signature-block { border: 0.5pt solid #ccc; padding: 10pt; }
+  .signature-block-title { font-size: 8pt; margin-bottom: 8pt; padding-bottom: 5pt; }
+  .signature-line label { font-size: 8pt; }
+  .note-text { font-size: 8pt; }
+  .no-print, .print-action, .digital-ok-banner { display: none !important; }
+  /* 入力欄 → printProxy */
+  textarea.print-hidden, input.print-hidden { display: none !important; }
+  .print-proxy { border: 0.5pt solid #bbb; padding: 4pt 6pt; font-size: 10pt; width: 100%; white-space: pre-wrap; word-wrap: break-word; font-family: inherit; line-height: 1.65; box-sizing: border-box; border-radius: 1pt; }
+  /* 印刷版：手書き線 */
+  .handwrite-print { display: block !important; border-bottom: 0.5pt solid #999; min-height: 24pt; margin-top: 2pt; }
+  input[type="date"] { border: 0.5pt solid #bbb !important; padding: 4pt 6pt; font-size: 10pt; min-height: auto; border-radius: 1pt; box-shadow: none !important; }
+}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>デザイン提案 合意書</h1>
+      <p class="header-note">スリーイーデザイン</p>
+      <div class="mode-switcher no-print">
+        <button class="mode-btn active" data-mode="print" type="button">印刷・手渡し版</button>
+        <button class="mode-btn" data-mode="digital" type="button">電子確認版</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 1. 基本情報 -->
+    <section class="form-section">
+      <h2 class="section-title">基本情報</h2>
+      <div class="field">
+        <label for="client_company">依頼者（会社名・屋号・氏名）</label>
+        <textarea id="client_company" name="client_company" rows="2" placeholder="株式会社〇〇　〇〇 様"></textarea>
+        <div class="print-proxy hidden"></div>
+      </div>
+      <div class="field">
+        <label for="project_name">案件名・制作内容</label>
+        <textarea id="project_name" name="project_name" rows="2" placeholder="例：ロゴデザイン提案　A案・B案・C案"></textarea>
+        <div class="print-proxy hidden"></div>
+      </div>
+      <div class="field field--short">
+        <label for="proposal_date">提案日</label>
+        <input type="date" id="proposal_date" name="proposal_date">
+        <div class="print-proxy hidden"></div>
+      </div>
+    </section>
+
+    <!-- 2. 合意内容 -->
+    <section class="form-section">
+      <h2 class="section-title">合意内容</h2>
+      <div class="agreement-box">
+        <div class="agreement-item">
+          <span class="agreement-num">1.</span>
+          <span>本提案書に含まれるデザイン案（シンボルマーク・ロゴタイプ・構成案・コンセプト等）の著作権は、制作者であるスリーイーデザインに帰属します。</span>
+        </div>
+        <div class="agreement-item">
+          <span class="agreement-num">2.</span>
+          <span>ご採用に至らない場合、提案書に含まれるデザイン・コンセプト・構成を、第三者への依頼・自社制作・類似表現等に流用・転用・参考使用することはできません。</span>
+        </div>
+        <div class="agreement-item">
+          <span class="agreement-num">3.</span>
+          <span>提案書データ（PDF・画像等）は、社内検討の目的にのみ使用できます。外部への共有・転送・複製・掲載は禁止します。</span>
+        </div>
+        <div class="agreement-item">
+          <span class="agreement-num">4.</span>
+          <span>提案後にご採用をいただけない場合、下記の提案制作費をお支払いいただきます。ご採用の場合は制作費に充当します。</span>
+        </div>
+        <div class="agreement-item">
+          <span class="agreement-num">5.</span>
+          <span>本合意書に署名いただいた時点で、上記すべての内容にご同意いただいたものとみなします。</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>提案制作費（キャンセル時）</label>
+        <div class="fee-display">
+          <span class="fee-label">提案料</span>
+          <span class="fee-amount">¥30,000（税込 ¥33,000）</span>
+          <span class="fee-note">※ご採用の場合、制作費に充当します</span>
+        </div>
+      </div>
+      <p class="note-text">
+        ※ 提案書受け取り後のキャンセルには、上記提案制作費が発生します。<br>
+        ※ お支払いは銀行振込にて、請求書発行後14日以内にお願いします。
+      </p>
+    </section>
+
+    <!-- 3. 制作者情報 -->
+    <section class="form-section">
+      <h2 class="section-title">制作者</h2>
+      <div class="agreement-box">
+        <p style="font-size:14px; line-height:1.9;">スリーイーデザイン<br>川端 一樹</p>
+      </div>
+    </section>
+
+    <!-- 4. 署名欄 -->
+    <section class="form-section">
+      <h2 class="section-title">確認・署名</h2>
+
+      <div class="signature-grid">
+        <!-- 依頼者 -->
+        <div class="signature-block">
+          <div class="signature-block-title">依頼者</div>
+
+          <!-- 印刷版：手書き線 -->
+          <div id="print-sig-area">
+            <div class="signature-line">
+              <label>会社名・氏名</label>
+              <div class="handwrite-print" style="min-height:32px;"></div>
+            </div>
+            <div class="signature-line">
+              <label>確認日</label>
+              <div class="handwrite-print" style="min-height:32px;"></div>
+            </div>
+          </div>
+
+          <!-- 電子版：入力欄 -->
+          <div id="digital-sig-area" class="hidden">
+            <div class="signature-line">
+              <label>会社名・氏名</label>
+              <input type="text" id="sig_client" name="sig_client" placeholder="株式会社〇〇　〇〇">
+              <div class="print-proxy hidden"></div>
+            </div>
+            <div class="signature-line">
+              <label>確認日</label>
+              <input type="date" id="sig_client_date" name="sig_client_date">
+              <div class="print-proxy hidden"></div>
+            </div>
+            <div class="digital-ok-banner" id="digital-ok-msg" style="display:none;">
+              ✓ 上記内容を確認し、合意書の内容すべてに同意しました。
+            </div>
+          </div>
+        </div>
+
+        <!-- 制作者 -->
+        <div class="signature-block">
+          <div class="signature-block-title">制作者</div>
+          <div class="signature-line">
+            <label>氏名</label>
+            <input type="text" id="sig_creator" name="sig_creator" value="スリーイーデザイン　川端 一樹" readonly>
+            <div class="print-proxy hidden"></div>
+          </div>
+          <div class="signature-line">
+            <label>作成日</label>
+            <input type="date" id="sig_creator_date" name="sig_creator_date">
+            <div class="print-proxy hidden"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="note-text" style="margin-top:16px;" id="print-note">
+        ※ 署名のうえ、1部をスリーイーデザインへご返送ください。
+      </p>
+      <p class="note-text" style="margin-top:16px; display:none;" id="digital-note">
+        ※ 内容ご確認のうえ、このPDFをメール・LINEにてご返送ください。
+      </p>
+    </section>
+
+    <!-- PDF出力ボタン -->
+    <div class="print-action no-print">
+      <button id="pdf-btn" type="button">PDF として保存する</button>
+    </div>
+
+  </main>
+
+  <script>
+    // 今日の日付
+    function toDateStr(d) {
+      return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+    }
+    const today = toDateStr(new Date());
+    document.getElementById('proposal_date').value = today;
+    document.getElementById('sig_creator_date').value = today;
+
+    // モード管理
+    let currentMode = 'print';
+
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentMode = btn.dataset.mode;
+        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        applyMode();
+      });
+    });
+
+    function applyMode() {
+      const isPrint = currentMode === 'print';
+      // 署名エリア切替
+      document.getElementById('print-sig-area').classList.toggle('hidden', !isPrint);
+      document.getElementById('digital-sig-area').classList.toggle('hidden', isPrint);
+      // 注釈切替
+      document.getElementById('print-note').style.display = isPrint ? '' : 'none';
+      document.getElementById('digital-note').style.display = isPrint ? 'none' : '';
+    }
+
+    // 電子版：氏名入力でOKバナー表示
+    document.getElementById('sig_client').addEventListener('input', function() {
+      const banner = document.getElementById('digital-ok-msg');
+      banner.style.display = this.value.trim() ? 'block' : 'none';
+    });
+
+    // printProxy 同期
+    function setupProxy(inputEl, proxyEl) {
+      function sync() { proxyEl.textContent = inputEl.value; }
+      inputEl.addEventListener('input', sync);
+      inputEl.addEventListener('change', sync);
+      sync();
+    }
+
+    ['client_company','project_name','sig_client','sig_creator'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const proxy = el.nextElementSibling;
+      if (proxy && proxy.classList.contains('print-proxy')) setupProxy(el, proxy);
+    });
+
+    function setupDateProxy(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const proxy = el.nextElementSibling;
+      if (!proxy) return;
+      function sync() {
+        if (el.value) {
+          const [y,m,d] = el.value.split('-');
+          proxy.textContent = y+'年'+parseInt(m)+'月'+parseInt(d)+'日';
+        } else {
+          proxy.textContent = '';
+        }
+      }
+      el.addEventListener('change', sync);
+      sync();
+    }
+    ['proposal_date','sig_client_date','sig_creator_date'].forEach(setupDateProxy);
+
+    // 印刷前後
+    window.addEventListener('beforeprint', () => {
+      document.querySelectorAll('.print-proxy').forEach(el => el.classList.remove('hidden'));
+      document.querySelectorAll('textarea, input[type="date"], input[type="text"]').forEach(el => el.classList.add('print-hidden'));
+    });
+    window.addEventListener('afterprint', () => {
+      document.querySelectorAll('.print-proxy').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('textarea, input[type="date"], input[type="text"]').forEach(el => el.classList.remove('print-hidden'));
+    });
+
+    document.getElementById('pdf-btn').addEventListener('click', () => window.print());
+  </script>
+</body>
+</html>
